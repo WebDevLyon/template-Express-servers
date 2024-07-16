@@ -10,9 +10,7 @@ A simple and scalable Express server template to kickstart your Node.js projects
     -   [Installation](#installation)
 -   [Usage](#usage)
     -   [Running the Server](#running-the-server)
-    -   [API Endpoints](#api-endpoints)
 -   [Project Structure](#project-structure)
--   [Contributing](#contributing)
 -   [License](#license)
 
 ## Features
@@ -59,3 +57,14 @@ node server
 # or
 yarn server
 ```
+## Contributing
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch: git checkout -b feature-branch.
+3. Make your changes and commit them: git commit -m 'Add some feature'.
+4. Push to the branch: git push origin feature-branch.
+5. Submit a pull request.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.

@@ -39,4 +39,23 @@ exports.register = async (req, res) => {
     res.sendStatus(400)
 	}
 }
+
+exports.login = async (req, res) => {
+	const userDB = fs.readFileSync('./db/user.json')
+	const userInfo = JSON.parse(userDB)
+	if (
+		req.body &&
+		req.body.email === userInfo.email &&
+		req.body.password === userInfo.password
+	) {
+		const token = jwt.sign({ userInfo }, 'the_secret_key')
+		res.json({
+		token,
+		email: userInfo.email,
+		name: userInfo.name
+	})
+	} else {
+		res.sendStatus(400)
+	}
+}
 //Put controllers

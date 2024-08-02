@@ -4,8 +4,6 @@ const bcrypt = require("bcrypt")
 const fs = require("fs")
 const { handleLogin, handleGoogleLogin } = require("../utilities/authUtilities")
 
-//const GoogleAuth = require("../utilities/google")
-
 const ConnectionTypes = {
 	LOGIN: "login",
 	GOOGLE: "Google",
@@ -50,9 +48,6 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
 	try {
-		const userDB = fs.readFileSync("./db/user.json")
-		const userInfo = JSON.parse(userDB)
-
 		if (
 			!req.body ||
 			!req.body.typeOfConnect ||
@@ -64,16 +59,16 @@ exports.login = async (req, res) => {
 
 		if (typeOfConnect == ConnectionTypes.LOGIN) {
 			try {
-				const response = await handleLogin(userInformations, userInfo)
+				const response = await handleLogin(userInformations)
 				res.json(response)
 			} catch (error) {
 				res.status(400).json({ error: error.message })
 			}
 		} else if (typeOfConnect == ConnectionTypes.GOOGLE) {
 			try {
+				console.log('object');
 				const response = await handleGoogleLogin(
-					userInformations,
-					userInfo
+					userInformations
 				)
 				res.json(response)
 			} catch (error) {

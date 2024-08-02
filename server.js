@@ -3,7 +3,6 @@ const cors = require('cors')
 
 // Database json si nécessaire
 const fs = require('fs')
-const events = require('./db/events.json')
 
 //Routes
 const nameRouter = require("./routes/index.js")
@@ -13,4 +12,6 @@ app.use(cors())
 app.use(express.json())
 
 //Routage 
-app.use("/")
+app.use("/",nameRouter)
+
+app.listen(3000);
